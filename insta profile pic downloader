@@ -1,0 +1,20 @@
+
+#you must download selenium library using cmd or search it on google
+from selenium import webdriver
+
+cd='C:\\chrome\\chromedriver.exe'
+driver=webdriver.Chrome(cd)
+use_h='enter the profile name'
+url='https://www.instagram.com/'
+url_p=url+use_h
+driver.get(url_p)
+try:
+	image=driver.find_element_by_xpath('//img[@class="_6q-tv"]')
+except:
+	image=driver.find_element_by_xpath('//img[@class="be6sR"]')
+
+img_link=image.get_attribute('src')
+path="E:\\"+use_h+".jpg"
+import urllib.request
+urllib.request.urlretrieve(img_link,path) 
+print("image is downloaded at:"+path)		
